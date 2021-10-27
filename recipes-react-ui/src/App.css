@@ -34,7 +34,14 @@ th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
-  background-color: rgb(180, 23, 180);
+  background-color: rgb(32, 153, 58);
+  /*background-color: rgb(180, 23, 180);*/
   color: white;
 }
 
+.App-thumbnail {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  /*padding: 5px;*/
+  width: 150px;
+}

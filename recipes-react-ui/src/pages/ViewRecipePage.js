@@ -7,20 +7,20 @@ import ChickenDinner from '../images/chicken_marsala.jpg';
 
 export const ViewRecipePage = ({ recipeToEdit }) => {
 
-    const [title, setTitle] = useState(recipeToEdit.title);
-    const [directions, setDirections] = useState(recipeToEdit.directions);
-    const [rating, setRating] = useState(recipeToEdit.rating);
+    /*const [title, setTitle] = useState(recipeToEdit.title);*/
+    /*const [directions, setDirections] = useState(recipeToEdit.directions);*/
+    /*const [rating, setRating] = useState(recipeToEdit.rating);*/
     const [notes, setNotes] = useState(recipeToEdit.notes);
     const [ideas, setIdeas] = useState(recipeToEdit.ideas);
-    const [ingredients, setIngredients] = useState(recipeToEdit.ingredients);
-    const [prepTime, setPrepTime] = useState(recipeToEdit.prepTime);
-    const [cookTime, setCookTime] = useState(recipeToEdit.cookTime);
-    const [totalTime, setTotalTime] = useState(recipeToEdit.totalTime);
+    /*const [ingredients, setIngredients] = useState(recipeToEdit.ingredients);*/
+    /*const [prepTime, setPrepTime] = useState(recipeToEdit.prepTime);*/
+    /*const [cookTime, setCookTime] = useState(recipeToEdit.cookTime);*/
+    /*const [totalTime, setTotalTime] = useState(recipeToEdit.totalTime);*/
 
     const history = useHistory();
 
     const editRecipe = async () => {
-        const editedRecipe = { title, directions, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime };
+        const editedRecipe = { notes, ideas };
         const response = await fetch(`/recipes/${recipeToEdit._id}`, {
             method: 'PUT',
             body: JSON.stringify(editedRecipe),
