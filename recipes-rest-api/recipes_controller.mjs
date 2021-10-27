@@ -14,12 +14,12 @@ app.use(express.urlencoded({
 app.use(express.json());
 
 /**
- * Creates a new recipe with the name, reps, weight, unit and date provided in the body
+ * Creates a new recipe with the id, title, directions, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime provided in the body
  */
 app.post('/recipes', (req, res) => {
-    recipes.createRecipe(req.body.name, req.body.reps, req.body.weight, req.body.unit, req.body.date)
-        .then(exercise => {
-            res.status(201).json(exercise);
+    recipes.createRecipe(req.body._id, req.body.title, req.body.directions, req.body.rating, req.body.notes, req.body.ideas, req.body.ingredients, req.body.prepTime, req.body.cookTime, req.body.totalTime)
+        .then(recipe => {
+            res.status(201).json(recipe);
         })
         .catch(error => {
             console.error(error);
@@ -66,10 +66,10 @@ app.get('/recipes', (req, res) => {
  * its name, reps, weight, unit and date to the values provided in the body.
  */
 app.put('/recipes/:_id', (req, res) => {
-    recipes.replaceRecipe(req.params._id, req.body.name, req.body.reps, req.body.weight, req.body.unit, req.body.date)
+    recipes.replaceRecipe(req.params._id, req.body.title, req.body.directions, req.body.rating, req.body.notes, req.body.ideas, req.body.ingredients, req.body.prepTime, req.body.cookTime, req.body.totalTime)
         .then(numUpdated => {
             if (numUpdated === 1) {
-                res.json({ _id: req.params._id, name: req.body.name, reps: req.body.reps, weight: req.body.weight, unit: req.body.unit, date: req.body.date })
+                res.json({ _id: req.params._id, title: req.body.title, directions: req.body.directions, rating: req.body.rating, notes: req.body.notes, ideas: req.body.ideas, ingredients: req.body.ingredients, prepTime: req.body.prepTime, cookTime: req.body.cookTime, totalTime: req.body.totalTime })
             } else {
                 res.status(404).json({ Error: 'Resource not found' });
             }

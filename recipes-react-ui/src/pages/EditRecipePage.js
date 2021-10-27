@@ -1,21 +1,23 @@
-import '../Layout.css';
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import ChickenDinner from '../images/chicken_marsala.jpg';
 
 export const EditRecipePage = ({ recipeToEdit }) => {
 
-    const [name, setName] = useState(recipeToEdit.name);
-    const [reps, setReps] = useState(recipeToEdit.reps);
-    const [weight, setWeight] = useState(recipeToEdit.weight);
-    const [unit, setUnit] = useState(recipeToEdit.unit);
-    const [date, setDate] = useState(recipeToEdit.date);
+    const [title, setTitle] = useState(recipeToEdit.title);
+    const [directions, setDirections] = useState(recipeToEdit.directions);
+    const [rating, setRating] = useState(recipeToEdit.rating);
+    const [notes, setNotes] = useState(recipeToEdit.notes);
+    const [ideas, setIdeas] = useState(recipeToEdit.ideas);
+    const [ingredients, setIngredients] = useState(recipeToEdit.ingredients);
+    const [prepTime, setPrepTime] = useState(recipeToEdit.prepTime);
+    const [cookTime, setCookTime] = useState(recipeToEdit.cookTime);
+    const [totalTime, setTotalTime] = useState(recipeToEdit.totalTime);
 
     const history = useHistory();
 
     const editRecipe = async () => {
-        const editedRecipe = { name, reps, weight, unit, date };
+        const editedRecipe = { title, directions, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime };
         const response = await fetch(`/recipes/${recipeToEdit._id}`, {
             method: 'PUT',
             body: JSON.stringify(editedRecipe),
@@ -32,43 +34,48 @@ export const EditRecipePage = ({ recipeToEdit }) => {
     };
 
     return (
-      <div class="wrapper">
-        <div class="box box1">
-            <Link to="/">Return to Recipes List</Link>
-        </div>
-        <div class="box box2"><img src={ChickenDinner} alt={""}/></div>
-        <div class="box box3">
-            <Link to="/">Print out this Recipe</Link>
-        </div>
-        <div class="box box4">Box 4</div>
-        <div class="box box5">
-            <input
-                type="text"
-                value={name}
-                onChange={e => setName(e.target.value)} />
-            <input
-                type="number"
-                value={reps}
-                onChange={e => setReps(e.target.value)} />
-            <input
-                type="number"
-                value={weight}
-                onChange={e => setWeight(e.target.value)} />
+      <div> 
+        <input
+            type="text"
+            value={title}
+            onChange={e => setTitle(e.target.value)} />
+        <input
+            type="text"
+            value={directions}
+            onChange={e => setDirections(e.target.value)} />
+        <input
+            type="text"
+            value={notes}
+            onChange={e => setNotes(e.target.value)} />
 
-            <select name='unit' value={unit} onChange={e => setUnit(e.target.value)}>
-                <option value='lbs'>lbs</option>
-                <option value='kgs'>kgs</option>
-                </select>
-            <input
-                type="text"
-                value={date}
-                onChange={e => setDate(e.target.value)} />
-            <button
-                onClick={editRecipe}>Save
-            </button>
-        </div>
-        <div class="box box6">Box 6</div>
-        <div class="box box7">Box 7</div>
+        <select name='rating' value={rating} onChange={e => setRating(e.target.value)}>
+            <option value='1'>1</option>
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+            </select>
+        <input
+            type="text"
+            value={ideas}
+            onChange={e => setIdeas(e.target.value)} />
+        <input
+            type="text"
+            value={ingredients}
+            onChange={e => setIngredients(e.target.value)} />
+        <input
+            type="text"
+            value={prepTime}
+            onChange={e => setPrepTime(e.target.value)} />
+        <input
+            type="text"
+            value={cookTime}
+            onChange={e => setCookTime(e.target.value)} />
+        <input
+            type="text"
+            value={totalTime}
+            onChange={e => setTotalTime(e.target.value)} />
+        <button
+            onClick={editRecipe}>Save
+        </button>
       </div>
     );
 }

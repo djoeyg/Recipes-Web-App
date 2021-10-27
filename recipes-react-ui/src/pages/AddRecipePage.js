@@ -3,16 +3,21 @@ import { useHistory } from "react-router-dom";
 
 export const AddRecipePage = () => {
 
-    const [name, setName] = useState('');
-    const [reps, setReps] = useState('');
-    const [weight, setWeight] = useState('');
-    const [unit, setUnit] = useState('');
-    const [date, setDate] = useState('');
+    const [_id, setId] = useState('');
+    const [title, setTitle] = useState('');
+    const [directions, setDirections] = useState('');
+    const [rating, setRating] = useState('');
+    const [notes, setNotes] = useState('');
+    const [ideas, setIdeas] = useState('');
+    const [ingredients, setIngredients] = useState('');
+    const [prepTime, setPrepTime] = useState('');
+    const [cookTime, setCookTime] = useState('');
+    const [totalTime, setTotalTime] = useState('');
 
     const history = useHistory();
 
     const addRecipe = async () => {
-        const newRecipe = { name, reps, weight, unit, date };
+        const newRecipe = { _id, title, directions, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime };
         const response = await fetch('/recipes', {
             method: 'POST',
             body: JSON.stringify(newRecipe),
@@ -32,30 +37,55 @@ export const AddRecipePage = () => {
         <div>
             <h1>Add a Recipe</h1>
             <input
+                type="number"
+                value={_id}
+                placeholder="Recipe ID"
+                onChange={e => setId(e.target.value)} />
+            <input
                 type="text"
-                value={name}
-                placeholder="Enter name here"
-                onChange={e => setName(e.target.value)} />
+                value={title}
+                placeholder="Enter title"
+                onChange={e => setTitle(e.target.value)} />
+            <input
+                type="text"
+                value={directions}
+                placeholder="Enter recipe"
+                onChange={e => setDirections(e.target.value)} />
             <input
                 type="number"
-                value={reps}
-                placeholder="Enter reps here"
-                onChange={e => setReps(e.target.value)} />
-            <input
-                type="number"
-                value={weight}
-                placeholder="Enter weight here"
-                onChange={e => setWeight(e.target.value)} />
+                placeholder="Enter rating 1-3"
+                value={rating}
+                onChange={e => setRating(e.target.value)} />    
             <input
                 type="text"
-                placeholder="Enter lbs or kgs here"
-                value={unit}
-                onChange={e => setUnit(e.target.value)} />    
+                placeholder="Enter notes"
+                value={notes}
+                onChange={e => setNotes(e.target.value)} />
             <input
                 type="text"
-                placeholder="Enter date here"
-                value={date}
-                onChange={e => setDate(e.target.value)} />
+                value={ideas}
+                placeholder="Enter ideas"
+                onChange={e => setIdeas(e.target.value)} />
+            <input
+                type="text"
+                value={ingredients}
+                placeholder="Enter ingredients"
+                onChange={e => setIngredients(e.target.value)} />
+            <input
+                type="text"
+                value={prepTime}
+                placeholder="Prep time"
+                onChange={e => setPrepTime(e.target.value)} />
+            <input
+                type="text"
+                placeholder="Cook Time"
+                value={cookTime}
+                onChange={e => setCookTime(e.target.value)} />    
+            <input
+                type="text"
+                placeholder="Total time"
+                value={totalTime}
+                onChange={e => setTotalTime(e.target.value)} />
             <button
                 onClick={addRecipe}
             >Add</button>

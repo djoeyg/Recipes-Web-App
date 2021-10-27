@@ -9,7 +9,7 @@ function RecipeList({ recipes, onDelete, onEdit }) {
                     <th>Image</th>
                     <th>Recipe Name</th>
                     <th>View Recipe</th>
-                    <th>Ingredients</th>
+                    <th>Rating</th>
                     <th>Notes</th>
                     <th>Ideas</th>
                     <th>Edit</th>
