@@ -7,20 +7,20 @@ import ChickenDinner from '../images/chicken_marsala.jpg';
 
 export const ViewRecipePage = ({ recipeToEdit }) => {
 
-    /*const [title, setTitle] = useState(recipeToEdit.title);*/
-    /*const [directions, setDirections] = useState(recipeToEdit.directions);*/
-    /*const [rating, setRating] = useState(recipeToEdit.rating);*/
+    const [title, setTitle] = useState(recipeToEdit.title);
+    const [directions, setDirections] = useState(recipeToEdit.directions);
+    const [rating, setRating] = useState(recipeToEdit.rating);
     const [notes, setNotes] = useState(recipeToEdit.notes);
     const [ideas, setIdeas] = useState(recipeToEdit.ideas);
-    /*const [ingredients, setIngredients] = useState(recipeToEdit.ingredients);*/
-    /*const [prepTime, setPrepTime] = useState(recipeToEdit.prepTime);*/
-    /*const [cookTime, setCookTime] = useState(recipeToEdit.cookTime);*/
-    /*const [totalTime, setTotalTime] = useState(recipeToEdit.totalTime);*/
+    const [ingredients, setIngredients] = useState(recipeToEdit.ingredients);
+    const [prepTime, setPrepTime] = useState(recipeToEdit.prepTime);
+    const [cookTime, setCookTime] = useState(recipeToEdit.cookTime);
+    const [totalTime, setTotalTime] = useState(recipeToEdit.totalTime);
 
     const history = useHistory();
 
     const editRecipe = async () => {
-        const editedRecipe = { notes, ideas };
+        const editedRecipe = { title, directions, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime };
         const response = await fetch(`/recipes/${recipeToEdit._id}`, {
             method: 'PUT',
             body: JSON.stringify(editedRecipe),
@@ -39,15 +39,28 @@ export const ViewRecipePage = ({ recipeToEdit }) => {
     return (
       <div class="wrapper">
         <div class="box box1">
+            <br></br>
             <Link to="/">Return to Recipes List</Link>
+            <br></br>
+            <h5>Rate this Recipe</h5>
+            <select name='rating' value={rating} onChange={e => setRating(e.target.value)}>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+            </select>
+            <br></br>
+            <button
+                onClick={editRecipe}>Save Changes
+            </button>
         </div>
         <div class="box box2"><img src={ChickenDinner} alt={""}/></div>
         <div class="box box3">
+            <br></br>
             <Link to="/">Print out this Recipe</Link>
         </div>
         <div class="box box4">
             <p>
-                <h4>INGREDIENTS</h4>
+                <h4>Ingredients</h4>
             1-1/2 pounds boneless skinless chicken breasts, pounded ¼-inch thick (see note), or chicken tenderloins<br></br>
             3 tablespoons all-purpose flour<br></br>
             Salt<br></br>
@@ -61,22 +74,61 @@ export const ViewRecipePage = ({ recipeToEdit }) => {
             2/3 cup dry Marsala wine<br></br>
             2/3 cup heavy cream<br></br>
             2 teaspoons chopped fresh thyme<br></br>
-            2 tablespoons chopped fresh Italian parsley, for serving (optional)
+            2 tablespoons chopped fresh Italian parsley, for serving<br></br><br></br>
+            Edit Ingredients :<br></br>
+            <textarea
+                rows="7"
+                cols="60"
+                value={ingredients}
+                onChange={e => setIngredients(e.target.value)} />
+            <br></br>
+            <button
+                onClick={editRecipe}>Save Changes to Ingredients
+            </button>
             </p>
         </div>
         <div class="box box5">
             <p>
                 <h2>Chicken Marsala</h2>
+                <input
+                    type="text"
+                    value={title}
+                    onChange={e => setTitle(e.target.value)} />
+                <br></br>
+                <button
+                    onClick={editRecipe}>Save Changes
+                </button>
+                <br></br><br></br>
                 Chicken Marsala is an Italian-American dish of golden pan-fried chicken cutlets and mushrooms in a rich Marsala wine sauce.
                 <br></br>
-                <br></br>Servings: 4
-                <br></br>Prep Time: 15 Minutes
-                <br></br>Cook Time: 30 Minutes
-                <br></br>Total Time: 45 Minutes
+                <p>
+                    Prep Time : 
+                    <input
+                        type="text"
+                        value={prepTime}
+                        onChange={e => setPrepTime(e.target.value)} />
+                    <br></br>
+                    Cook Time :
+                    <input
+                        type="text"
+                        value={cookTime}
+                        onChange={e => setCookTime(e.target.value)} />
+                    <br></br>
+                    Total Time :
+                    <input
+                        type="text"
+                        value={totalTime}
+                        onChange={e => setTotalTime(e.target.value)} />
+                    <br></br>
+                </p>
+                <button
+                    onClick={editRecipe}>Save Changes to Recipe
+                </button>
             </p>
         </div>
         <div class="box box6">
             <h4>Notes about this Recipe:</h4>
+            <p>How was the recipe? Write down your thoughts for next time.</p>
             <textarea
                 rows="12"
                 cols="60"
@@ -89,6 +141,7 @@ export const ViewRecipePage = ({ recipeToEdit }) => {
         </div>
         <div class="box box7">
             <h4>Ideas for next time:</h4>
+            <p>Have an idea to try something different? Write it down here.</p>
             <textarea
                 rows="12"
                 cols="60"
@@ -118,7 +171,18 @@ export const ViewRecipePage = ({ recipeToEdit }) => {
                 Note: If your chicken breasts are large (like the ones in the photos that are about 3/4 lb. each), it’s best to first cut 
                 them horizontally to form four flat fillets, then pound them to an even 1/4-inch thickness. If you pound large chicken 
                 breasts without first halving them, they’ll be huge. Of course, you could also pound them thin first and then cut them in half
-                vertically; the only drawback is that they’ll lose their natural shape (which, admittedly, is not a big deal!).</p>
+                vertically; the only drawback is that they’ll lose their natural shape (which, admittedly, is not a big deal!).
+                <br></br>
+                Edit Directions :
+                <input
+                    type="text"
+                    value={directions}
+                    onChange={e => setDirections(e.target.value)} />
+                <br></br>
+                <button
+                onClick={editRecipe}>Save Changes to Directions
+                </button>
+            </p>
         </div>
       </div>
     );

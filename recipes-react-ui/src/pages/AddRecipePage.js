@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 export const AddRecipePage = () => {
 
@@ -36,59 +37,72 @@ export const AddRecipePage = () => {
     return (
         <div>
             <h1>Add a Recipe</h1>
+            <p>Make entries for each field below.</p>
             <input
                 type="number"
                 value={_id}
                 placeholder="Recipe ID"
                 onChange={e => setId(e.target.value)} />
+            <br></br>
             <input
                 type="text"
                 value={title}
                 placeholder="Enter title"
                 onChange={e => setTitle(e.target.value)} />
+            <br></br>
             <input
                 type="text"
                 value={directions}
                 placeholder="Enter recipe"
                 onChange={e => setDirections(e.target.value)} />
+            <br></br>
             <input
                 type="number"
                 placeholder="Enter rating 1-3"
                 value={rating}
-                onChange={e => setRating(e.target.value)} />    
+                onChange={e => setRating(e.target.value)} />
+            <br></br>    
             <input
                 type="text"
                 placeholder="Enter notes"
                 value={notes}
                 onChange={e => setNotes(e.target.value)} />
+            <br></br>
             <input
                 type="text"
                 value={ideas}
                 placeholder="Enter ideas"
                 onChange={e => setIdeas(e.target.value)} />
+            <br></br>
             <input
                 type="text"
                 value={ingredients}
                 placeholder="Enter ingredients"
                 onChange={e => setIngredients(e.target.value)} />
+            <br></br>
             <input
                 type="text"
                 value={prepTime}
                 placeholder="Prep time"
                 onChange={e => setPrepTime(e.target.value)} />
+            <br></br>
             <input
                 type="text"
                 placeholder="Cook Time"
                 value={cookTime}
-                onChange={e => setCookTime(e.target.value)} />    
+                onChange={e => setCookTime(e.target.value)} />
+            <br></br>    
             <input
                 type="text"
                 placeholder="Total time"
                 value={totalTime}
                 onChange={e => setTotalTime(e.target.value)} />
+            <br></br>
             <button
                 onClick={addRecipe}
-            >Add</button>
+            >Add to Recipes List</button>
+            <br></br>
+            <Link to="/">Cancel and Return to Recipes List</Link>
         </div>
     );
 }

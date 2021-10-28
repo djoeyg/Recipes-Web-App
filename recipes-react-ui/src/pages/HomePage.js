@@ -38,6 +38,7 @@ function HomePage({ setRecipeToEdit }) {
             <h2>My Recipe Book</h2>
             <RecipeList recipes={recipes} onDelete={onDelete} onEdit={onEdit}></RecipeList>
             <Link to="/add-recipe">Add a Recipe</Link>
+            <p>You will need the following information to add a recipe:<br></br>Id#, Title, Recipe Directions, Prep Time &amp; Cook Time</p>
         </>
     );
 }

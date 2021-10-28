@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 export const EditRecipePage = ({ recipeToEdit }) => {
 
@@ -34,47 +35,70 @@ export const EditRecipePage = ({ recipeToEdit }) => {
 
     return (
       <div> 
+        <h1>Edit Recipe Page</h1>
+        <p>Make entries for each field below.
+        <br></br>
+        Title :
         <input
             type="text"
             value={title}
             onChange={e => setTitle(e.target.value)} />
+        <br></br>
+        Directions :
         <input
             type="text"
             value={directions}
             onChange={e => setDirections(e.target.value)} />
-        <input
-            type="text"
-            value={notes}
-            onChange={e => setNotes(e.target.value)} />
-
+        <br></br>
+        Rating :
         <select name='rating' value={rating} onChange={e => setRating(e.target.value)}>
             <option value='1'>1</option>
             <option value='2'>2</option>
             <option value='3'>3</option>
-            </select>
+        </select>
+        <br></br>
+        Notes :
+        <input
+            type="text"
+            value={notes}
+            onChange={e => setNotes(e.target.value)} />
+        <br></br>
+        Ideas :
         <input
             type="text"
             value={ideas}
             onChange={e => setIdeas(e.target.value)} />
+        <br></br>
+        Ingredients :
         <input
             type="text"
             value={ingredients}
             onChange={e => setIngredients(e.target.value)} />
+        <br></br>
+        Prep Time : 
         <input
             type="text"
             value={prepTime}
             onChange={e => setPrepTime(e.target.value)} />
+        <br></br>
+        Cook Time :
         <input
             type="text"
             value={cookTime}
             onChange={e => setCookTime(e.target.value)} />
+        <br></br>
+        Total Time :
         <input
             type="text"
             value={totalTime}
             onChange={e => setTotalTime(e.target.value)} />
+        <br></br>
+        </p>
         <button
-            onClick={editRecipe}>Save
+            onClick={editRecipe}>Save Changes to Recipe
         </button>
+        <br></br>
+        <Link to="/">Cancel and Return to Recipes List</Link>
       </div>
     );
 }
