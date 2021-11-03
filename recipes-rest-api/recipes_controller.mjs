@@ -14,10 +14,10 @@ app.use(express.urlencoded({
 app.use(express.json());
 
 /**
- * Creates a new recipe with the id, title, directions, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime provided in the body
+ * Creates a new recipe with the id, title, directions, description, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime provided in the body
  */
 app.post('/recipes', (req, res) => {
-    recipes.createRecipe(req.body._id, req.body.title, req.body.directions, req.body.rating, req.body.notes, req.body.ideas, req.body.ingredients, req.body.prepTime, req.body.cookTime, req.body.totalTime)
+    recipes.createRecipe(req.body._id, req.body.title, req.body.directions, req.body.description, req.body.rating, req.body.notes, req.body.ideas, req.body.ingredients, req.body.prepTime, req.body.cookTime, req.body.totalTime)
         .then(recipe => {
             res.status(201).json(recipe);
         })
@@ -62,14 +62,14 @@ app.get('/recipes', (req, res) => {
 });
 
 /**
- * Updates the recipe whose id is provided in the path parameter and set
- * its name, reps, weight, unit and date to the values provided in the body.
+ * Updates the recipe whose id is provided in the path parameter and set its id, title, directions, description, 
+ * rating, notes, ideas, ingredients, prepTime, cookTime, totalTime to the values provided in the body.
  */
 app.put('/recipes/:_id', (req, res) => {
-    recipes.replaceRecipe(req.params._id, req.body.title, req.body.directions, req.body.rating, req.body.notes, req.body.ideas, req.body.ingredients, req.body.prepTime, req.body.cookTime, req.body.totalTime)
+    recipes.replaceRecipe(req.params._id, req.body.title, req.body.directions, req.body.description, req.body.rating, req.body.notes, req.body.ideas, req.body.ingredients, req.body.prepTime, req.body.cookTime, req.body.totalTime)
         .then(numUpdated => {
             if (numUpdated === 1) {
-                res.json({ _id: req.params._id, title: req.body.title, directions: req.body.directions, rating: req.body.rating, notes: req.body.notes, ideas: req.body.ideas, ingredients: req.body.ingredients, prepTime: req.body.prepTime, cookTime: req.body.cookTime, totalTime: req.body.totalTime })
+                res.json({ _id: req.params._id, title: req.body.title, directions: req.body.directions, description: req.body.description, rating: req.body.rating, notes: req.body.notes, ideas: req.body.ideas, ingredients: req.body.ingredients, prepTime: req.body.prepTime, cookTime: req.body.cookTime, totalTime: req.body.totalTime })
             } else {
                 res.status(404).json({ Error: 'Resource not found' });
             }

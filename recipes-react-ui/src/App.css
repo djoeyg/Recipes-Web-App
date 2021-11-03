@@ -26,9 +26,21 @@ td, th {
   padding: 8px;
 }
 
-tr:nth-child(even){background-color: #f2f2f2;}
+.BGC-1 {
+  background-color: rgb(238, 175, 175);
+}
 
-tr:hover {background-color: #ddd;}
+.BGC-2 {
+  background-color: rgb(241, 241, 19);
+}
+
+.BGC-3 {
+  background-color: rgb(170, 245, 170);
+}
+
+/*tr:nth-child(even){background-color: #f2f2f2;}*/
+
+tr:hover {background-color: rgb(100, 200, 240);}
 
 th {
   padding-top: 12px;

@@ -6,6 +6,7 @@ export const EditRecipePage = ({ recipeToEdit }) => {
 
     const [title, setTitle] = useState(recipeToEdit.title);
     const [directions, setDirections] = useState(recipeToEdit.directions);
+    const [description, setDescription] = useState(recipeToEdit.description);
     const [rating, setRating] = useState(recipeToEdit.rating);
     const [notes, setNotes] = useState(recipeToEdit.notes);
     const [ideas, setIdeas] = useState(recipeToEdit.ideas);
@@ -17,7 +18,7 @@ export const EditRecipePage = ({ recipeToEdit }) => {
     const history = useHistory();
 
     const editRecipe = async () => {
-        const editedRecipe = { title, directions, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime };
+        const editedRecipe = { title, directions, description, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime };
         const response = await fetch(`/recipes/${recipeToEdit._id}`, {
             method: 'PUT',
             body: JSON.stringify(editedRecipe),
@@ -50,8 +51,15 @@ export const EditRecipePage = ({ recipeToEdit }) => {
             value={directions}
             onChange={e => setDirections(e.target.value)} />
         <br></br>
+        Description :
+        <input
+            type="text"
+            value={description}
+            onChange={e => setDescription(e.target.value)} />
+        <br></br>
         Rating :
         <select name='rating' value={rating} onChange={e => setRating(e.target.value)}>
+            <option value=''></option>
             <option value='1'>1</option>
             <option value='2'>2</option>
             <option value='3'>3</option>

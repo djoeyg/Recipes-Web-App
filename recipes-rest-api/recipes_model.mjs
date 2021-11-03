@@ -1,7 +1,7 @@
 // Get the mongoose object
 import mongoose from 'mongoose';
 
-// Prepare to the database recipes_db in the MongoDB server running locally on port 27017
+// Connect to the database recipes_db in the MongoDB server running locally on port 27017
 mongoose.connect(
     "mongodb://localhost:27017/recipes_db",
     { useNewUrlParser: true, useUnifiedTopology: true }
@@ -24,6 +24,7 @@ const recipeSchema = mongoose.Schema({
     _id: { type: Number, required: true},
     title: { type: String, required: true },
     directions: { type: String, required: true },
+    description: { type: String, required: false },
     rating: { type: Number, required: false },
     notes: { type: String, required: false },
     ideas: { type: String, required: false },
@@ -43,6 +44,7 @@ const Recipe = mongoose.model("Recipe", recipeSchema);
  * @param {Number} _id
  * @param {String} title
  * @param {String} directions
+ * @param {String} description
  * @param {Number} rating
  * @param {String} notes
  * @param {String} ideas 
@@ -52,8 +54,8 @@ const Recipe = mongoose.model("Recipe", recipeSchema);
  * @param {String} totalTime
  * @returns A promise. Resolves to the JSON object for the document created by calling save
  */
-const createRecipe = async (_id, title, directions, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime) => {
-    const recipe = new Recipe({ _id: _id, title: title, directions: directions, rating: rating, notes: notes, ideas: ideas, ingredients: ingredients, prepTime: prepTime, cookTime: cookTime, totalTime: totalTime });
+const createRecipe = async (_id, title, directions, description, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime) => {
+    const recipe = new Recipe({ _id: _id, title: title, directions: directions, description: description, rating: rating, notes: notes, ideas: ideas, ingredients: ingredients, prepTime: prepTime, cookTime: cookTime, totalTime: totalTime });
     return recipe.save();
 }
 
@@ -76,10 +78,11 @@ const findRecipeById = async (_id) => {
 }
 
 /**
- * Replace the title, directions, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime properties of the recipe with the id value provided
+ * Replace the title, directions, description, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime properties of the recipe with the id value provided
  * @param {Number} _id
  * @param {String} title
  * @param {String} directions
+ * @param {String} description
  * @param {Number} rating
  * @param {String} notes
  * @param {String} ideas 
@@ -89,8 +92,8 @@ const findRecipeById = async (_id) => {
  * @param {String} totalTime
  * @returns A promise. Resolves to the number of documents modified
  */
-const replaceRecipe = async (_id, title, directions, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime) => {
-    const result = await Recipe.replaceOne({ _id: _id }, { title: title, directions: directions, rating: rating, notes: notes, ideas: ideas, ingredients: ingredients, prepTime: prepTime, cookTime: cookTime, totalTime: totalTime });
+const replaceRecipe = async (_id, title, directions, description, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime) => {
+    const result = await Recipe.replaceOne({ _id: _id }, { title: title, directions: directions, description: description, rating: rating, notes: notes, ideas: ideas, ingredients: ingredients, prepTime: prepTime, cookTime: cookTime, totalTime: totalTime });
     return result.nModified;
 }
 

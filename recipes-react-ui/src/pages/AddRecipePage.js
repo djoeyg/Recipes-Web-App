@@ -7,6 +7,7 @@ export const AddRecipePage = () => {
     const [_id, setId] = useState('');
     const [title, setTitle] = useState('');
     const [directions, setDirections] = useState('');
+    const [description, setDescription] = useState('');
     const [rating, setRating] = useState('');
     const [notes, setNotes] = useState('');
     const [ideas, setIdeas] = useState('');
@@ -18,7 +19,7 @@ export const AddRecipePage = () => {
     const history = useHistory();
 
     const addRecipe = async () => {
-        const newRecipe = { _id, title, directions, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime };
+        const newRecipe = { _id, title, directions, description, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime };
         const response = await fetch('/recipes', {
             method: 'POST',
             body: JSON.stringify(newRecipe),
@@ -55,6 +56,12 @@ export const AddRecipePage = () => {
                 value={directions}
                 placeholder="Enter recipe"
                 onChange={e => setDirections(e.target.value)} />
+            <br></br>
+            <input
+                type="text"
+                value={description}
+                placeholder="Enter description"
+                onChange={e => setDescription(e.target.value)} />
             <br></br>
             <input
                 type="number"
