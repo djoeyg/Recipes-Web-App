@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import RandomRecipe from '../components/RandomRecipe';
 import RecipeList from '../components/RecipeList';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
@@ -23,6 +24,11 @@ function HomePage({ setRecipeToEdit }) {
         history.push("/edit-recipe");
     }
 
+    const onView = recipe => {
+        setRecipeToEdit(recipe);
+        history.push("/view-recipe");
+    }
+
     const loadRecipes = async () => {
         const response = await fetch('/recipes');
         const data = await response.json();
@@ -36,7 +42,9 @@ function HomePage({ setRecipeToEdit }) {
     return (
         <>
             <h2>My Recipe Book</h2>
-            <RecipeList recipes={recipes} onDelete={onDelete} onEdit={onEdit}></RecipeList>
+            <RandomRecipe recipes={recipes} onView={onView}></RandomRecipe>
+            <br></br>
+            <RecipeList recipes={recipes} onDelete={onDelete} onEdit={onEdit} onView={onView}></RecipeList>
             <Link to="/add-recipe">Add a Recipe</Link>
             <p>You will need the following information to add a recipe:<br></br>Id#, Title, Recipe Directions, Prep Time &amp; Cook Time</p>
         </>

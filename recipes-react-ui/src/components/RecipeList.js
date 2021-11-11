@@ -1,7 +1,7 @@
 import React from 'react';
 import Recipe from './Recipe';
 
-function RecipeList({ recipes, onDelete, onEdit }) {
+function RecipeList({ recipes, onDelete, onEdit, onView }) {
     return (
         <table id="recipes">
             <thead>
@@ -20,6 +20,7 @@ function RecipeList({ recipes, onDelete, onEdit }) {
                 {recipes.map((recipe, i) => <Recipe recipe={recipe}
                     onDelete={onDelete}
                     onEdit={onEdit}
+                    onView={onView}
                     key={i} />)}
             </tbody>
         </table>
