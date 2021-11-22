@@ -2,6 +2,7 @@ import '../Layout.css';
 import React, { useState } from 'react';
 /*import { useHistory } from "react-router-dom";*/
 import { Link } from 'react-router-dom';
+/*import IngredientList from '../components/IngredientList';*/
 import Images from '../images/directory.js';
 
 export const ViewRecipePage = ({ recipeToEdit }) => {
@@ -37,8 +38,8 @@ export const ViewRecipePage = ({ recipeToEdit }) => {
     };
 
     return (
-      <div class="wrapper">
-        <div class="box box1">
+      <div className="wrapper">
+        <div className="box box1">
             <br></br>
             <Link to="/">Return to Recipes List</Link>
             <br></br>
@@ -54,15 +55,15 @@ export const ViewRecipePage = ({ recipeToEdit }) => {
                 onClick={editRecipe}>Save Changes
             </button>
         </div>
-        <div class="box box2"><img src={Images[recipeToEdit._id]} alt={""}/></div>
-        <div class="box box3">
+        <div className="box box2"><img src={Images[recipeToEdit._id]} alt={""}/></div>
+        <div className="box box3">
             <br></br>
             <Link to="/">Print out this Recipe</Link>
         </div>
-        <div class="box box4">
+        <div className="box box4">
             <p>
                 <h4>Ingredients</h4>
-            {ingredients}<br></br><br></br>
+                {ingredients}<br></br><br></br>
             Edit Ingredients :<br></br>
             <textarea
                 rows="7"
@@ -75,7 +76,7 @@ export const ViewRecipePage = ({ recipeToEdit }) => {
             </button>
             </p>
         </div>
-        <div class="box box5">
+        <div className="box box5">
             <p>
                 <h2>{title}</h2>
                 
@@ -122,7 +123,7 @@ export const ViewRecipePage = ({ recipeToEdit }) => {
                 </button>
             </p>
         </div>
-        <div class="box box6">
+        <div className="box box6">
             <h4>Notes about this Recipe:</h4>
             <p>How was the recipe? Write down your thoughts.</p>
             <textarea
@@ -135,7 +136,7 @@ export const ViewRecipePage = ({ recipeToEdit }) => {
                 onClick={editRecipe}>Save
             </button>    
         </div>
-        <div class="box box7">
+        <div className="box box7">
             <h4>Ideas for next time:</h4>
             <p>Have an idea to try something different? Write it down here.</p>
             <textarea
@@ -148,17 +149,20 @@ export const ViewRecipePage = ({ recipeToEdit }) => {
                 onClick={editRecipe}>Save
             </button>
         </div>
-        <div class="box box8">
-            <p>{directions}
-                <br></br>
-                Edit Directions :
-                <input
-                    type="text"
+        <div className="box box8">
+            
+            <h4>Directions for this Recipe:</h4>
+                {directions}
+            <p>
+                Edit Directions :<br></br>
+                <textarea
+                    rows="7"
+                    cols="200"
                     value={directions}
                     onChange={e => setDirections(e.target.value)} />
                 <br></br>
                 <button
-                onClick={editRecipe}>Save Changes to Directions
+                    onClick={editRecipe}>Save Changes to Directions
                 </button>
             </p>
         </div>

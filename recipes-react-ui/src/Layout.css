@@ -51,7 +51,7 @@ img {
     grid-column:2/3;
     grid-row:2/4;
     border:1px solid #333;
-    font-size: calc(9px + 2vmin);
+    font-size: calc(7px + 2vmin);
 }
 
 .box6{
