@@ -31,6 +31,7 @@ export const ScrapeRecipePage = ({ data }) => {
     const ingredientList = extractIngredients(list);
 
     const title = name;
+    const imgUrl = image;
     const directions = paragraph;
     const ingredients = ingredientList;
 
@@ -49,7 +50,7 @@ export const ScrapeRecipePage = ({ data }) => {
     const history = useHistory();
 
     const addRecipe = async () => {
-        const newRecipe = { _id, title, directions, description, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime };
+        const newRecipe = { _id, title, imgUrl, directions, description, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime };
         const response = await fetch('/recipes', {
             method: 'POST',
             body: JSON.stringify(newRecipe),
@@ -138,7 +139,7 @@ export const ScrapeRecipePage = ({ data }) => {
                 <img src={image} alt={""}/></div>
             <div className="box box3">
                 <br></br>
-                <Link to="/">Print out this Recipe</Link>
+                
             </div>
 
             <div className="box box4">

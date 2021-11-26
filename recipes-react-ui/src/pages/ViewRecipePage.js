@@ -1,13 +1,14 @@
 import '../Layout.css';
 import React, { useState } from 'react';
-/*import { useHistory } from "react-router-dom";*/
+import { useHistory } from "react-router-dom";
 import { Link } from 'react-router-dom';
 /*import IngredientList from '../components/IngredientList';*/
-import Images from '../images/directory.js';
+/*import Images from '../images/directory.js';*/
 
 export const ViewRecipePage = ({ recipeToEdit }) => {
 
     const [title, setTitle] = useState(recipeToEdit.title);
+    const [imgUrl, setImgUrl] = useState(recipeToEdit.imgUrl);
     const [directions, setDirections] = useState(recipeToEdit.directions);
     const [description, setDescription] = useState(recipeToEdit.description);
     const [rating, setRating] = useState(recipeToEdit.rating);
@@ -18,10 +19,10 @@ export const ViewRecipePage = ({ recipeToEdit }) => {
     const [cookTime, setCookTime] = useState(recipeToEdit.cookTime);
     const [totalTime, setTotalTime] = useState(recipeToEdit.totalTime);
 
-    /*const history = useHistory();*/
+    const history = useHistory();
 
     const editRecipe = async () => {
-        const editedRecipe = { title, directions, description, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime };
+        const editedRecipe = { title, imgUrl, directions, description, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime };
         const response = await fetch(`/recipes/${recipeToEdit._id}`, {
             method: 'PUT',
             body: JSON.stringify(editedRecipe),
@@ -55,10 +56,19 @@ export const ViewRecipePage = ({ recipeToEdit }) => {
                 onClick={editRecipe}>Save Changes
             </button>
         </div>
-        <div className="box box2"><img src={Images[recipeToEdit._id]} alt={""}/></div>
+        <div className="box box2">
+            <img src={imgUrl} alt={""}/>
+            <br></br>
+            Image Source URL :
+            <br></br>
+            <input
+                type="text"
+                value={imgUrl}
+                onChange={e => setImgUrl(e.target.value)} />
+        </div>
         <div className="box box3">
             <br></br>
-            <Link to="/">Print out this Recipe</Link>
+            <Link onClick={() => history.push("/print-recipe")} to="/print-recipe">View Recipe in Printer Format</Link>
         </div>
         <div className="box box4">
             <p>

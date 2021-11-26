@@ -6,6 +6,7 @@ import AddRecipePage from './pages/AddRecipePage';
 import EditRecipePage from './pages/EditRecipePage';
 import ViewRecipePage from './pages/ViewRecipePage';
 import ScrapeRecipePage from './pages/ScrapeRecipePage';
+import PrintRecipePage from './pages/PrintRecipePage.js';
 import { useState } from 'react';
 
 function App() {
@@ -24,6 +25,9 @@ function App() {
           </Route>
           <Route path="/scrape-recipe">
             <ScrapeRecipePage data={data} />
+          </Route>
+          <Route path="/print-recipe">
+            <PrintRecipePage recipeToEdit={recipeToEdit} />
           </Route>
           <Route path="/edit-recipe">
             <EditRecipePage recipeToEdit={recipeToEdit} />

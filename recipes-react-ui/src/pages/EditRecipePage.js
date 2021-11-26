@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 
 export const EditRecipePage = ({ recipeToEdit }) => {
 
+    const [_id, setId] = useState(recipeToEdit._id);
     const [title, setTitle] = useState(recipeToEdit.title);
+    const [imgUrl, setImgUrl] = useState(recipeToEdit.imgUrl);
     const [directions, setDirections] = useState(recipeToEdit.directions);
     const [description, setDescription] = useState(recipeToEdit.description);
     const [rating, setRating] = useState(recipeToEdit.rating);
@@ -18,7 +20,7 @@ export const EditRecipePage = ({ recipeToEdit }) => {
     const history = useHistory();
 
     const editRecipe = async () => {
-        const editedRecipe = { title, directions, description, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime };
+        const editedRecipe = { _id, title, imgUrl, directions, description, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime };
         const response = await fetch(`/recipes/${recipeToEdit._id}`, {
             method: 'PUT',
             body: JSON.stringify(editedRecipe),
@@ -39,11 +41,23 @@ export const EditRecipePage = ({ recipeToEdit }) => {
         <h1>Edit Recipe Page</h1>
         <p>Make entries for each field below.
         <br></br>
+        Id# :
+        <input
+            type="number"
+            value={_id}
+            onChange={e => setId(e.target.value)} />
+        <br></br>
         Title :
         <input
             type="text"
             value={title}
             onChange={e => setTitle(e.target.value)} />
+        <br></br>
+        Image Source URL :
+        <input
+            type="text"
+            value={imgUrl}
+            onChange={e => setImgUrl(e.target.value)} />
         <br></br>
         Directions :
         <input

@@ -2,7 +2,7 @@ import React from 'react';
 import { BiTrash } from 'react-icons/bi';
 import { AiFillEdit } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import Images from '../images/directory.js';
+/*import Images from '../images/directory.js';*/
 import '../App.css';
 
 function Recipe({ recipe, onDelete, onEdit, onView }) {
@@ -19,9 +19,11 @@ function Recipe({ recipe, onDelete, onEdit, onView }) {
         return bgc
     }
 
+    /*<td><img class="App-thumbnail" src={Images[recipe._id]} alt={""}/></td>*/
+
     return (
         <tr class={getColor(recipe.rating)}>
-            <td><img class="App-thumbnail" src={Images[recipe._id]} alt={""}/></td>
+            <td><img class="App-thumbnail" src={recipe.imgUrl} alt={""}/></td>
             <td>{recipe.title}</td>
             <td><Link onClick={() => onView(recipe)} to="/view-recipe">View Recipe</Link></td>
             <td>{recipe.rating}</td>

@@ -23,6 +23,7 @@ mongoose.set("useCreateIndex", true);
 const recipeSchema = mongoose.Schema({
     _id: { type: Number, required: true},
     title: { type: String, required: true },
+    imgUrl: {type: String, required: false },
     directions: { type: String, required: true },
     description: { type: String, required: false },
     rating: { type: Number, required: false },
@@ -43,6 +44,7 @@ const Recipe = mongoose.model("Recipe", recipeSchema);
  * Create a recipe
  * @param {Number} _id
  * @param {String} title
+ * @param {String} imgUrl
  * @param {String} directions
  * @param {String} description
  * @param {Number} rating
@@ -54,8 +56,8 @@ const Recipe = mongoose.model("Recipe", recipeSchema);
  * @param {String} totalTime
  * @returns A promise. Resolves to the JSON object for the document created by calling save
  */
-const createRecipe = async (_id, title, directions, description, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime) => {
-    const recipe = new Recipe({ _id: _id, title: title, directions: directions, description: description, rating: rating, notes: notes, ideas: ideas, ingredients: ingredients, prepTime: prepTime, cookTime: cookTime, totalTime: totalTime });
+const createRecipe = async (_id, title, imgUrl, directions, description, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime) => {
+    const recipe = new Recipe({ _id: _id, title: title, imgUrl: imgUrl, directions: directions, description: description, rating: rating, notes: notes, ideas: ideas, ingredients: ingredients, prepTime: prepTime, cookTime: cookTime, totalTime: totalTime });
     return recipe.save();
 }
 
@@ -81,6 +83,7 @@ const findRecipeById = async (_id) => {
  * Replace the title, directions, description, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime properties of the recipe with the id value provided
  * @param {Number} _id
  * @param {String} title
+ * @param {String} imgUrl
  * @param {String} directions
  * @param {String} description
  * @param {Number} rating
@@ -92,8 +95,8 @@ const findRecipeById = async (_id) => {
  * @param {String} totalTime
  * @returns A promise. Resolves to the number of documents modified
  */
-const replaceRecipe = async (_id, title, directions, description, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime) => {
-    const result = await Recipe.replaceOne({ _id: _id }, { title: title, directions: directions, description: description, rating: rating, notes: notes, ideas: ideas, ingredients: ingredients, prepTime: prepTime, cookTime: cookTime, totalTime: totalTime });
+const replaceRecipe = async (_id, title, imgUrl, directions, description, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime) => {
+    const result = await Recipe.replaceOne({ _id: _id }, { title: title, imgUrl: imgUrl, directions: directions, description: description, rating: rating, notes: notes, ideas: ideas, ingredients: ingredients, prepTime: prepTime, cookTime: cookTime, totalTime: totalTime });
     return result.nModified;
 }
 

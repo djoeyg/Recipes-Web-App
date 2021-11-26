@@ -73,7 +73,6 @@ function HomePage({ setRecipeToEdit, setRecipeToAdd }) {
         <>
             <h2>My Recipe Book</h2>
             <RandomRecipe recipes={recipes} onView={onView}></RandomRecipe>
-            <br></br>
             <RecipeList recipes={recipes} onDelete={onDelete} onEdit={onEdit} onView={onView}></RecipeList>
             <p>Enter a web address for a recipe from All-Recipes.com.</p>
             <br></br>

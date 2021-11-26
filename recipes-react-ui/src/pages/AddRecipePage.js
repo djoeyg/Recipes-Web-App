@@ -6,6 +6,7 @@ export const AddRecipePage = () => {
 
     const [_id, setId] = useState('');
     const [title, setTitle] = useState('');
+    const [imgUrl, setImgUrl] = useState('')
     const [directions, setDirections] = useState('');
     const [description, setDescription] = useState('');
     const [rating, setRating] = useState('');
@@ -19,7 +20,7 @@ export const AddRecipePage = () => {
     const history = useHistory();
 
     const addRecipe = async () => {
-        const newRecipe = { _id, title, directions, description, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime };
+        const newRecipe = { _id, title, imgUrl, directions, description, rating, notes, ideas, ingredients, prepTime, cookTime, totalTime };
         const response = await fetch('/recipes', {
             method: 'POST',
             body: JSON.stringify(newRecipe),
@@ -50,6 +51,12 @@ export const AddRecipePage = () => {
                 value={title}
                 placeholder="Enter title"
                 onChange={e => setTitle(e.target.value)} />
+            <br></br>
+            <input
+                type="text"
+                value={imgUrl}
+                placeholder="Enter img src"
+                onChange={e => setImgUrl(e.target.value)} />
             <br></br>
             <input
                 type="text"
