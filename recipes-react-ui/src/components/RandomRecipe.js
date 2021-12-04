@@ -5,8 +5,7 @@ function RandomRecipe({ recipes, onView }) {
     const getRandom = async () => {
         
         const collectionSize = Object.keys(recipes).length + 1;
-        /*const length = {array_length : size};*/
-        /*const array = { random_array : length};*/
+    
         const response = await fetch('https://cs360-random-recipe-generator.herokuapp.com/', {
             method: 'POST',
             mode: 'cors',
@@ -16,9 +15,10 @@ function RandomRecipe({ recipes, onView }) {
                 'Content-Type': 'application/json',
             },
         });
-        if (response.status === 200) {
-            alert(`Successfully called random generator API, status code = ${response.status}`);
-        } else {
+        if (response.status !== 200) {
+            // --Optional alert for successful API call--
+            /* alert(`Successfully called random generator API, status code = ${response.status}`);
+        } else { */
             alert(`Failed to connect with API, status code = ${response.status}`);
         }
         const data = await response.json();

@@ -8,10 +8,10 @@ function PrintRecipePage({ recipeToEdit }) {
     const [viewDisplay, setDisplay] = useState('')
 
     const getPrintView = async () => {
-        const response = await fetch('https://dreamteam-htmlconvert.herokuapp.com/api/', {
+        const response = await fetch('https://dreamteam-htmlconvert-v2.herokuapp.com/api/', {
             method: 'GET',
             mode: 'cors',
-            /*params: JSON.stringify({id: recipeId}),*/
+            /*body: JSON.stringify({URL: url}),  --Request object format for POST request version of API-- */
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',

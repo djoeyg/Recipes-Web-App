@@ -1,5 +1,5 @@
 body {
-  /*background-color: rgb(30, 133, 202);*/
+  /*background-color: rgb(30, 133, 202); --alternative color choice-- */
   background-color: rgb(255,255,255);
 }
 
@@ -55,7 +55,7 @@ td, th {
   background-color: rgb(170, 245, 170);
 }
 
-/*tr:nth-child(even){background-color: #f2f2f2;}*/
+/*tr:nth-child(even){background-color: #f2f2f2;} --alternating color distinction for list-- */
 
 tr:hover {background-color: rgb(100, 200, 240);}
 
@@ -64,14 +64,13 @@ th {
   padding-bottom: 12px;
   text-align: center;
   background-color: rgb(32, 153, 58);
-  /*background-color: rgb(180, 23, 180);*/
+  /*background-color: rgb(180, 23, 180); --alternative green color choice-- */
   color: white;
 }
 
 .App-thumbnail {
   border: 1px solid #ddd;
   border-radius: 4px;
-  /*padding: 5px;*/
   width: 150px;
 }
 
@@ -96,4 +95,24 @@ button:active {
   background-color: rgb(104, 168, 241);
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+}
+
+input[type=text] {
+  font-size: calc(10px + 1vmin);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+input[type=text]:focus {
+  border: 3px solid rgb(22, 61, 238);
 }

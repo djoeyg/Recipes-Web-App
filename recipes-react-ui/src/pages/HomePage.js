@@ -22,9 +22,10 @@ function HomePage({ setRecipeToEdit, setRecipeToAdd }) {
 
     const getScrapeData = async () => {
         
-        /*send a POST request with a JSON that has a single key-value pair {'URL': 'allrecipes.com/whateverrecipeyouwant'}*/
-        /*url = "https://www.allrecipes.com/recipe/21261/yummy-sweet-potato-casserole/";*/
-        /*curl -H "Content-Type: application/json" -X POST https://cs361recipescraper.herokuapp.com/scrape -d "{\"URL\": \"https://www.allrecipes.com/recipe/173941/steak-house-au-gratin-potatoes/\"}"*/
+        // --Documentation & Test data for scraper API--  
+        //send a POST request with a JSON that has a single key-value pair {'URL': 'allrecipes.com/whateverrecipeyouwant'}
+        //url = "https://www.allrecipes.com/recipe/21261/yummy-sweet-potato-casserole/";
+        //curl -H "Content-Type: application/json" -X POST https://cs361recipescraper.herokuapp.com/scrape -d "{\"URL\": \"https://www.allrecipes.com/recipe/173941/steak-house-au-gratin-potatoes/\"}"
         
         const response = await fetch('https://cs361recipescraper.herokuapp.com/scrape', {
             method: 'POST',

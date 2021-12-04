@@ -36,8 +36,6 @@ export const ScrapeRecipePage = ({ data }) => {
     const ingredients = ingredientList;
 
     const [_id, setId] = useState('');
-    /*const [resultName, setTitle] = useState('');*/
-    /*const [directions, setDirections] = useState('');*/
     const [resultList, setIngredients] = useState('');
     const [description, setDescription] = useState('');
     const [rating, setRating] = useState('');
@@ -68,12 +66,11 @@ export const ScrapeRecipePage = ({ data }) => {
 
     const ShoppingList = async () => {
         
-        // {"name": "xyz", "url": "abc", "recipeIngredients", "jkl"}
+        // --Test data for Shopping List API request--
         //curl -H "Content-Type: application/json" -X POST https://recipeingredientlist.herokuapp.com/ -d "{\"recipe\":{\"name\":\"Steak House 
         //Au Gratin Potatoes\",\"recipeIngredients\":[\"1 tablespoon butter\",\"3 russet potato, peeled and cubed\",\"1 cup heavy cream\",\"0.5 
         //cup 2% reduced-fat milk\",\"4 cloves garlic, minced\",\"2 tablespoons all-purpose flour\",\"salt and black pepper to taste\",\"1 cup 
         //grated medium Cheddar cheese\"],\"recipe_url\":\"https://www.allrecipes.com/recipe/173941/steak-house-au-gratin-potatoes/\"}}"
-        /*body: JSON.stringify({name: name, recipeIngredients: list}),*/
 
         const response = await fetch('http://127.0.0.1:8080/', {
             method: 'POST',
@@ -90,36 +87,9 @@ export const ScrapeRecipePage = ({ data }) => {
             alert(`Failed to connect with API: status code = ${response.status}`);
         }
         const resultData = await response.json();
-        /*const resultList = extractIngredients(resultData.recipeIngredients);*/
         const resultList = resultData.recipeIngredients;
         setIngredients(resultList);
     };
-
-    /*Enter the Recipe Name :<br></br>
-                    <input
-                        type="text"
-                        value={title}
-                        placeholder={name}
-                        onChange={e => setTitle(e.target.value)} />
-                    <br></br> 
-                    
-     Enter Directions :
-                    <input
-                        type="text"
-                        value={directions}
-                        placeholder={paragraph}
-                        onChange={e => setDirections(e.target.value)} />
-                    <br></br>
-                    
-    <br></br>
-                    Edit Ingredients :<br></br>
-                    <textarea
-                        rows="7"
-                        cols="60"
-                        value={list}
-                        placeholder={list}
-                        onChange={e => setIngredients(e.target.value)} />
-                    <br></br>*/
 
     return (
         <div className="wrapper">

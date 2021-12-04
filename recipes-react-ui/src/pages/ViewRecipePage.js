@@ -2,8 +2,6 @@ import '../Layout.css';
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import { Link } from 'react-router-dom';
-/*import IngredientList from '../components/IngredientList';*/
-/*import Images from '../images/directory.js';*/
 
 export const ViewRecipePage = ({ recipeToEdit }) => {
 
@@ -35,7 +33,6 @@ export const ViewRecipePage = ({ recipeToEdit }) => {
         } else {
             alert(`Failed to update recipe, status code = ${response.status}`);
         }
-        /*history.push("/");*/
     };
 
     return (
@@ -89,32 +86,30 @@ export const ViewRecipePage = ({ recipeToEdit }) => {
         <div className="box box5">
             <p>
                 <h2>{title}</h2>
-                
                 {description}
-                
                 <br></br>
                 <p>
-                    Prep Time: {prepTime} 
+                    Prep Time:
                     <br></br>
                     <input
                         type="text"
                         value={prepTime}
                         onChange={e => setPrepTime(e.target.value)} />
-                    <br></br><br></br>
-                    Cook Time: {cookTime}
+                    <br></br>
+                    Cook Time:
                     <br></br>
                     <input
                         type="text"
                         value={cookTime}
                         onChange={e => setCookTime(e.target.value)} />
-                    <br></br><br></br>
-                    Total Time: {totalTime}
+                    <br></br>
+                    Total Time:
                     <br></br>
                     <input
                         type="text"
                         value={totalTime}
                         onChange={e => setTotalTime(e.target.value)} />
-                    <br></br><br></br>
+                    <br></br>
                     Edit Recipe Name :<br></br>
                     <input
                         type="text"
