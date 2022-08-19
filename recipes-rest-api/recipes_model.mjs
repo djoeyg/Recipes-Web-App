@@ -15,7 +15,7 @@ db.once("open", () => {
 });
 
 // Tell mongoose to create indexes, which help with faster querying
-mongoose.set("useCreateIndex", true);
+// mongoose.set("useCreateIndex", true);
 
 /**
  * Define the schema
